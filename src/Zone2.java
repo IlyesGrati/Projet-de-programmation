@@ -1,5 +1,6 @@
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
 
 public class Zone2 {
 	private ArrayList <Tas> list = new ArrayList<Tas>();
@@ -47,21 +48,37 @@ public class Zone2 {
 	public boolean deplacer(int tasD,int tasA) {
 		Tas t1=list.get(tasD);
 		Tas t2=list.get(tasA);
-		Carte c1=t1.getElement(t1.getSize()-1);
-		Carte c2=t2.getElement(t2.getSize()-1);
-		
+		int s1=t1.getSize();
+		int s2=t2.getSize();
 		boolean bool;
-		
-		if( (c1.getType()==c2.getType() ) && (c1.getVal()==c2.getVal()-1)){
-			Carte c = suppCarte(tasD);
-			ajouterCarte(c,tasA);
-			System.out.println("Déplacement effectué avec succès");
-			bool=true;
-		}
-		else {
-			System.out.println("Ce déplacement dans la Zone2 est invalide"); 
+
+		if ((s1!=0)&&(s2!=0)){
+			Carte c1=t1.getElement(t1.getSize()-1);
+			Carte c2=t2.getElement(t2.getSize()-1);
+			if((c1.getType()==c2.getType()) && (c1.getVal()==c2.getVal()-1)){
+				Carte c = suppCarte(tasD);
+				ajouterCarte(c,tasA);
+				System.out.println("Déplacement effectué avec succès");
+				bool=true;
+			}
+			else {
+				System.out.println("Ce déplacement dans la Zone2 est invalide"); 
+				bool=false;
+			}
+		}else {
+			if (s1==0)
+				System.out.println("Le tas de départ est vide !!");
+			else {
+				if (s2==0)
+					System.out.println("Le tas d'arrivé est vide !!");
+			}
+				
 			bool=false;
 		}
+		
+		
+		
+
 		return bool;
 			
 	}
@@ -114,4 +131,14 @@ public class Zone2 {
 	public Tas getTas (int x) {
 		return (list.get(x));
 	}
+	
+	public boolean estVide() { //!!!!!!!!!
+		boolean bool=true;
+		for (int i=0;(i<12)&&(bool==true);i++) {
+			if (getTas(i).getSize()!=0)
+				bool=false;			
+		}
+		return bool;
+	}
+	//!!!!!!!!! j ai enlevée getSize()
 }

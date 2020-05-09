@@ -1,5 +1,5 @@
 
-import java.util.*;
+import java.util.ArrayList;
 
 public class Tas {
 	private ArrayList<Carte> list ;
@@ -20,6 +20,7 @@ public class Tas {
 	public int getSize() {
 		return list.size();
 	}
+	
 	
 	public Carte getElement(int ind) {
 		return list.get(ind);
