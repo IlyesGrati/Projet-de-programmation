@@ -17,6 +17,7 @@ public class Test {
 				principal();
 			}catch(Exception non_entier) {
 				System.out.println("veuillez taper un entier s.v.p");
+				System.out.println();
 			}
 		}
 	}
